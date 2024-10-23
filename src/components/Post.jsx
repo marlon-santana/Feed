@@ -1,3 +1,5 @@
+import { Avatar } from './Avatar';
+import { Comment } from './Comment';
 import styles from  './Post.module.css';
 
 export function Post ({author, content}) {
@@ -5,9 +7,7 @@ export function Post ({author, content}) {
         <article className={styles.wrapper}>
           <header>
             <div className={styles.post}>
-                <img
-                    src="https://media.licdn.com/dms/image/v2/C4D03AQHcyYIhfjRCHg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1616358409180?e=1735171200&v=beta&t=jw3KFDxVlO6OyrFVN7QOF6ZXZOfTkWF3J2k-LyMX_J0" 
-                />
+               <Avatar src="https://media.licdn.com/dms/image/v2/C4D03AQHcyYIhfjRCHg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1616358409180?e=1735171200&v=beta&t=jw3KFDxVlO6OyrFVN7QOF6ZXZOfTkWF3J2k-LyMX_J0"  />
                 <div className={styles.authorInfo}>
                     <strong >Marlon Santana</strong>
                     <span>Frontend Developer</span>
@@ -27,11 +27,18 @@ export function Post ({author, content}) {
           <form className={styles.formComent}>
             <strong>Deixe seu feedback</strong>
             <textarea placeholder='Nossa, adorei amigo! Parabéns'/>
-            
+
             <footer>
             <button type='submit'>Publicar</button>
             </footer>
           </form>
+
+          <div className={styles.commentList}>
+          <Comment />
+          <Comment />
+          <Comment />
+
+          </div>
         </article>
 
     );

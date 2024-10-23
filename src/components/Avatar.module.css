@@ -1,0 +1,18 @@
+.wrapper img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+    border: 4px solid var(--gray--800);
+    outline: 2px solid var(--green--500);
+    margin-bottom: 1rem;
+    box-sizing: initial;
+}
+
+.hasNotBorder img {
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 1rem;
+    width: 3.2rem;
+    height: 3.2rem
+
+}
