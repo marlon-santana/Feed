@@ -2,7 +2,7 @@ import styles from  './Post.module.css';
 
 export function Post ({author, content}) {
     return (
-        <article>
+        <article className={styles.wrapper}>
           <header>
             <div className={styles.post}>
                 <img
@@ -12,11 +12,9 @@ export function Post ({author, content}) {
                     <strong >Marlon Santana</strong>
                     <span>Frontend Developer</span>
                 </div>
-
-                <time  title=" publicado em 22 de outubro de 2024 "datetime="2022-07-01">Publicado há 1h</time>
             </div>
+            <time  title=" publicado em 22 de outubro de 2024 "datetime="2022-07-01">Públicado há 1h</time>
           </header>
-
           <div className={styles.content}>
             <p>Fala galeraa 👋</p>
 
@@ -26,6 +24,14 @@ export function Post ({author, content}) {
 
             <p><a href=''>#novoprojeto #nlw #rocketseat</a></p>
           </div>
+          <form className={styles.formComent}>
+            <strong>Deixe seu feedback</strong>
+            <textarea placeholder='Nossa, adorei amigo! Parabéns'/>
+            
+            <footer>
+            <button type='submit'>Publicar</button>
+            </footer>
+          </form>
         </article>
 
     );
