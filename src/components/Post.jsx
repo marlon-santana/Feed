@@ -1,43 +1,71 @@
+import { useState } from 'react';
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
+import { formatPublishedDate, formatPublishedDateRelativeToNow  } from './Utils';
+
 import styles from  './Post.module.css';
 
-export function Post ({author, content}) {
+
+export function Post ({author, publishedAt, content}) {
+const [comment, setComment] = useState([])
+const [newComment, setNewComment] = useState('');
+const formattedDate = formatPublishedDate(publishedAt);
+const relativeDate = formatPublishedDateRelativeToNow(publishedAt);
+
+const handleCreateNewComment = (e) => {
+  e.preventDefault();
+
+   const commentToAdd = e.target.comment.value;
+  setComment([...comment, commentToAdd]);
+  setNewComment('');
+  
+}
+
+
     return (
-        <article className={styles.wrapper}>
+        <article  className={styles.wrapper}>
           <header>
             <div className={styles.post}>
-               <Avatar src="https://media.licdn.com/dms/image/v2/C4D03AQHcyYIhfjRCHg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1616358409180?e=1735171200&v=beta&t=jw3KFDxVlO6OyrFVN7QOF6ZXZOfTkWF3J2k-LyMX_J0"  />
+               <Avatar src={author.avatarUrl}  />
                 <div className={styles.authorInfo}>
-                    <strong >Marlon Santana</strong>
-                    <span>Frontend Developer</span>
+                    <strong>{author.name}</strong>
+                    <span>{author.role}</span>
                 </div>
             </div>
-            <time  title=" publicado em 22 de outubro de 2024 "datetime="2022-07-01">Públicado há 1h</time>
+            <time  title=" publicado em 22 de outubro de 2024 "datetime={publishedAt.toISOString()}>
+            {relativeDate}
+            </time>
           </header>
+
+
           <div className={styles.content}>
-            <p>Fala galeraa 👋</p>
-
-            <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-
-            <p>👉 jane.design/doctorcare</p>
-
-            <p><a href=''>#novoprojeto #nlw #rocketseat</a></p>
+            {content.map((item) => {
+              if (item.type === 'paragraph') {
+                return <p key={item.id}>{item.content}</p>;
+              }else if (item.type === 'link') {
+                return <p><a key={item.id} href="">{item.content}</a></p>;
+              }
+            })}
+            
           </div>
-          <form className={styles.formComent}>
+
+
+          <form onSubmit={handleCreateNewComment} className={styles.formComent}>
             <strong>Deixe seu feedback</strong>
-            <textarea placeholder='Nossa, adorei amigo! Parabéns'/>
+            <textarea 
+            name='comment' 
+            value={newComment} 
+            onChange={(e) => setNewComment(e.target.value)} 
+            placeholder='Nossa, adorei amigo! Parabéns'
+            />
 
             <footer>
-            <button type='submit'>Publicar</button>
+            <button name='buton' type='submit'>Publicar</button>
             </footer>
           </form>
 
           <div className={styles.commentList}>
-          <Comment />
-          <Comment />
-          <Comment />
-
+          <Comment content={content} />
           </div>
         </article>
 

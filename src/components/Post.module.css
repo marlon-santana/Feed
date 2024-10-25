@@ -74,6 +74,17 @@
     color: var(--white);
 }
 
+@media (max-width: 768px) {
+    .formComent textarea {
+        width: 70vw;
+    }
+    .wrapper {
+        width: 89vw;
+    }
+
+}
+
+
 .formComent textarea::placeholder {
     color: var(--gray--300); 
     opacity: 0.7;
