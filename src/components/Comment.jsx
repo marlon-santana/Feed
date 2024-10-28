@@ -16,14 +16,14 @@ export function Comment({content}) {
                     <header>
                         <div className={styles.authorAndTime}>
                             <strong>Marlon santana</strong>
-                            <time  title=" publicado em 22 de outubro de 2024 "datetime="2022-07-01">Cerca de 1h atrás</time>
+                            <time  title=" publicado em 22 de outubro de 2024 ">Cerca de 1h atrás</time>
                         </div>
                         <button>
                         <Trash size={24} />
                         </button>
                         
                     </header>
-                    <p>{content}</p>
+                    {/* <p>{content}</p> */}
                 </div>
             </div>
             <footer>

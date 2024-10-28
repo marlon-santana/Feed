@@ -32,22 +32,22 @@ const handleCreateNewComment = (e) => {
                     <span>{author.role}</span>
                 </div>
             </div>
-            <time  title=" publicado em 22 de outubro de 2024 "datetime={publishedAt.toISOString()}>
+            <time  title=" publicado em 22 de outubro de 2024 ">
             {relativeDate}
             </time>
           </header>
 
-
+{/* 
           <div className={styles.content}>
-            {content.map((item) => {
+            {content.map((item, index) => {
               if (item.type === 'paragraph') {
-                return <p key={item.id}>{item.content}</p>;
+                return <p key={index}>{item.content}</p>;
               }else if (item.type === 'link') {
-                return <p><a key={item.id} href="">{item.content}</a></p>;
+                return <p><a key={index} href="">{item.content}</a></p>;
               }
             })}
             
-          </div>
+          </div> */}
 
 
           <form onSubmit={handleCreateNewComment} className={styles.formComent}>
