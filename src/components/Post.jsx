@@ -15,12 +15,15 @@ const relativeDate = formatPublishedDateRelativeToNow(publishedAt);
 const handleCreateNewComment = (e) => {
   e.preventDefault();
 
-   const commentToAdd = e.target.comment.value;
-  setComment([...comment, commentToAdd]);
+  const newCommentText = e.target.comment.value;
+  setComment([...comment, newCommentText]);
   setNewComment('');
-  
 }
 
+const deleteComment = (commentToDelete) => {
+  const updatedComments = comment.filter(item => item !== commentToDelete);
+  setComment(updatedComments);
+};
 
     return (
         <article  className={styles.wrapper}>
@@ -37,7 +40,6 @@ const handleCreateNewComment = (e) => {
             </time>
           </header>
 
-{/* 
           <div className={styles.content}>
             {content.map((item, index) => {
               if (item.type === 'paragraph') {
@@ -47,7 +49,7 @@ const handleCreateNewComment = (e) => {
               }
             })}
             
-          </div> */}
+          </div>
 
 
           <form onSubmit={handleCreateNewComment} className={styles.formComent}>
@@ -65,7 +67,16 @@ const handleCreateNewComment = (e) => {
           </form>
 
           <div className={styles.commentList}>
-          <Comment content={content} />
+            {comment.map((item, index) => {
+              return(
+                <Comment 
+                key={comment}
+                deleteComment={() => deleteComment(item)} 
+                comment={item} 
+            />
+              );
+            })}
+        
           </div>
         </article>
 

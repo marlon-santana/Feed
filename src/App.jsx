@@ -31,7 +31,8 @@ const Mock = [
     content: [
       { type: 'paragraph', content: "Lorem ipsum, dolor sit expedita natus modi placeat tempora nam similique voluptatibus cumque."},
       { type: 'paragraph', content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam maxime alias ullam nam animi beatae quos repudiandae sunt. Consequuntur at temporibus expedita natus modi placeat tempora nam similique amet consectetur adipisicing elit. Quibusdam maxime alias ullam nam animi beatae quos repudiandae sunt. Consequuntur at temporibus  "},
-      {type:  'link', content: 'https://www.google.com'}
+      {type:  'link', content: 'https://www.google.com'},
+      {type:  'link', content: '#Rocketseat'}
     ],
     publishedAt: new Date('2024-10-25 08:00:00'),
   },
@@ -47,10 +48,10 @@ function App() {
     <div className={styles.wrapper}>
       <Sidebar />
       <main>
-      {Mock.map((post) => {
+      {Mock.map((post, index) => {
         return (
           <Post
-            key={post.id}
+            key={index}
             author={post.author}
             content={post.content}
             publishedAt={post.publishedAt}
