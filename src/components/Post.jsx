@@ -20,10 +20,22 @@ const handleCreateNewComment = (e) => {
   setNewComment('');
 }
 
+const handleNewCommentChange = (e) => {
+  e.target.setCustomValidity('');
+  setNewComment(e.target.value);
+}
+
+
+const handleNewCommentInvalid = (e) => {
+  e.target.setCustomValidity('Esse campo é obrigatorio');
+}
+
 const deleteComment = (commentToDelete) => {
-  const updatedComments = comment.filter(item => item !== commentToDelete);
+  const updatedComments = comment.filter(comment => comment !== commentToDelete);
   setComment(updatedComments);
 };
+
+const isNewCommentEmpty = newComment.length === 0;
 
     return (
         <article  className={styles.wrapper}>
@@ -57,20 +69,22 @@ const deleteComment = (commentToDelete) => {
             <textarea 
             name='comment' 
             value={newComment} 
-            onChange={(e) => setNewComment(e.target.value)} 
-            placeholder='Nossa, adorei amigo! Parabéns'
+            onChange={handleNewCommentChange} 
+            placeholder='Deixe um comentário'
+            required
+            onInvalid={handleNewCommentInvalid}
             />
 
             <footer>
-            <button name='buton' type='submit'>Publicar</button>
+            <button name='button' type='submit' disabled={newComment.length === 0} >Publicar</button>
             </footer>
           </form>
 
           <div className={styles.commentList}>
-            {comment.map((item, index) => {
+            {comment.map((item,index) => {
               return(
                 <Comment 
-                key={comment}
+                key={index}
                 deleteComment={() => deleteComment(item)} 
                 comment={item} 
             />

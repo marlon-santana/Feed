@@ -112,7 +112,12 @@ textarea:focus {
     opacity: 0.8;
 }
 
-.formComent button[type="submit"]:hover {
+.formComent button[type="submit"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.formComent button[type="submit"]:not(:disabled):hover {
     opacity: 1;
 }
 
