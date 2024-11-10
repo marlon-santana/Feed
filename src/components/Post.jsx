@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Avatar } from './Avatar';
-import { Comment } from './Comment';
+import { Comment } from './Comment/index'; 
 import { formatPublishedDate, formatPublishedDateRelativeToNow  } from './Utils';
 
 import styles from  './Post.module.css';
@@ -36,6 +36,7 @@ const deleteComment = (commentToDelete) => {
 };
 
 const isNewCommentEmpty = newComment.length === 0;
+
 
     return (
         <article  className={styles.wrapper}>
@@ -76,7 +77,7 @@ const isNewCommentEmpty = newComment.length === 0;
             />
 
             <footer>
-            <button name='button' type='submit' disabled={newComment.length === 0} >Publicar</button>
+            <button name='button' type='submit' disabled={newComment.length > 0 && newComment !== ``} >Publicar</button>
             </footer>
           </form>
 

@@ -1,7 +1,6 @@
 import styles from './Comment.module.css'
-import Img from '../../src/trash.svg'
 import { ThumbsUp, Trash} from '@phosphor-icons/react'
-import { Avatar } from './Avatar';
+import { Avatar } from '../Avatar'; 
 import { useState } from 'react';
 
 
@@ -10,7 +9,9 @@ export function Comment({comment, deleteComment}) {
 
     const handleLikeComment = () => {
         setLikeCount(state => state + 1);
-    }
+    };
+
+   
     
     return (
         <div className={styles.comment}>
@@ -28,7 +29,9 @@ export function Comment({comment, deleteComment}) {
                         </button>
                         
                     </header>
-                    <p>{comment}</p>
+                    {console.log(comment)}
+                    { comment === `` ? null : <p>{comment}</p>}
+                    
                 </div>
             </div>
             <footer>
