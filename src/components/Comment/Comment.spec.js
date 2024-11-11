@@ -52,22 +52,6 @@ describe('Comment component ', () => {
         expect(likeCountElement.textContent).toBe('3'); // Verifica se o contador de likes é 1 após o clique
     });
 
-    // it(`should comment is not empty`, () => {
-    //     const mockDeleteComment = jest.fn();
-    //     const testComment = '';
-
-    //     const { getByRole } = render( 
-    //         <Comment 
-    //         comment={testComment} 
-    //         deleteComment={mockDeleteComment} 
-    //     />)
-    //     const publishButton = getByRole('button', { name: /Publicar/i });
-
-       
-    //     expect(publishButton).toBeDisabled();
-
-    // })
-
     })
 
 

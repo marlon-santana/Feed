@@ -29,8 +29,7 @@ export function Comment({comment, deleteComment}) {
                         </button>
                         
                     </header>
-                    {console.log(comment)}
-                    { comment === `` ? null : <p>{comment}</p>}
+                    { comment === "" ? null : <p>{comment}</p>}
                     
                 </div>
             </div>

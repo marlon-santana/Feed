@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Avatar } from './Avatar';
-import { Comment } from './Comment/index'; 
-import { formatPublishedDate, formatPublishedDateRelativeToNow  } from './Utils';
+import { Avatar } from '../Avatar';
+import { Comment } from '../Comment/index'; 
+import { formatPublishedDate, formatPublishedDateRelativeToNow  } from '../Utils';
 
 import styles from  './Post.module.css';
 
 
-export function Post ({author, publishedAt, content}) {
+export function Post ({author , publishedAt, content}) {
 const [comment, setComment] = useState([])
 const [newComment, setNewComment] = useState('');
 const formattedDate = formatPublishedDate(publishedAt);
@@ -77,7 +77,7 @@ const isNewCommentEmpty = newComment.length === 0;
             />
 
             <footer>
-            <button name='button' type='submit' disabled={newComment.length > 0 && newComment !== ``} >Publicar</button>
+            <button name='button' type='submit' disabled={newComment === "" } >Publicar</button>
             </footer>
           </form>
 
