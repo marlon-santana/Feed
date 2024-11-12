@@ -65,10 +65,3 @@ describe("Post Component", () => {
             expect(publishButton).toBeDisabled();
         });
 })
-
-/*
-1- renderização componente --ok
-2- verificar se o botão publicar fica desable quando nao  houver texto no campo --ok
-3- tentar publicar sem texto --ok
-4- publicar com texto e verificar se o texto apareceu em tela ---ok
- */
