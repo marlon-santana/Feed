@@ -1,6 +1,7 @@
 
 // Unit tests for: Post
 
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react';
 import { formatPublishedDate, formatPublishedDateRelativeToNow } from '../../Utils';
@@ -23,6 +24,7 @@ jest.mock("../../Avatar", () => ({
 }));
 
 jest.mock("../../Comment/index", () => ({
+  // eslint-disable-next-line react/prop-types
   Comment: ({ deleteComment, comment }) => (
     <div>
       <span>{comment}</span>

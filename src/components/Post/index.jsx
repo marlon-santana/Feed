@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Avatar } from '../Avatar';
 import { Comment } from '../Comment/index'; 
@@ -9,6 +10,7 @@ import styles from  './Post.module.css';
 export function Post ({author , publishedAt, content, id}) {
 const [comment, setComment] = useState([])
 const [newComment, setNewComment] = useState('');
+// eslint-disable-next-line no-unused-vars
 const formattedDate = formatPublishedDate(publishedAt);
 const relativeDate = formatPublishedDateRelativeToNow(publishedAt);
 
@@ -38,7 +40,6 @@ const deleteComment = (commentToDelete) => {
   setComment(updatedComments);
 };
 
-const isNewCommentEmpty = newComment.length === 0;
 
 
     return (
@@ -61,7 +62,7 @@ const isNewCommentEmpty = newComment.length === 0;
               if (item.type === 'paragraph') {
                 return <p key={id}>{item.content}</p>;
               }else if (item.type === 'link') {
-                return <p><a key={id} href="">{item.content}</a></p>;
+                return <p key={index}><a  href="">{item.content}</a></p>;
               }
             })}
             
