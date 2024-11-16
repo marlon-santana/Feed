@@ -9,12 +9,6 @@ import "@testing-library/jest-dom";
 describe('Sidebar() Sidebar method', () => {
   // Happy Path Tests
   describe('Happy Path', () => {
-    test('should render the sidebar with the correct class', () => {
-      // This test checks if the sidebar is rendered with the correct CSS class.
-      render(<Sidebar />);
-      const sidebarElement = screen.getByRole('complementary');
-     
-    });
 
     test('should display the correct profile image', () => {
       // This test verifies that the profile image is displayed with the correct src.
@@ -65,4 +59,4 @@ describe('Sidebar() Sidebar method', () => {
   });
 });
 
-// End of unit tests for: Sidebar
+

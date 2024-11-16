@@ -49,6 +49,7 @@ function App() {
       {Mock.map((post, index) => {
         return (
           <Post
+            id={post.id}
             key={index}
             author={post.author}
             content={post.content}

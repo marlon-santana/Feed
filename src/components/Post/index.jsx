@@ -6,18 +6,21 @@ import { formatPublishedDate, formatPublishedDateRelativeToNow  } from '../Utils
 import styles from  './Post.module.css';
 
 
-export function Post ({author , publishedAt, content}) {
+export function Post ({author , publishedAt, content, id}) {
 const [comment, setComment] = useState([])
 const [newComment, setNewComment] = useState('');
 const formattedDate = formatPublishedDate(publishedAt);
 const relativeDate = formatPublishedDateRelativeToNow(publishedAt);
 
+
 const handleCreateNewComment = (e) => {
   e.preventDefault();
 
-  const newCommentText = e.target.comment.value;
-  setComment([...comment, newCommentText]);
-  setNewComment('');
+  const newCommentText = newComment.trim(); 
+    if (newCommentText) { 
+      setComment([...comment, newCommentText]);
+      setNewComment(''); 
+    }
 }
 
 const handleNewCommentChange = (e) => {
@@ -56,9 +59,9 @@ const isNewCommentEmpty = newComment.length === 0;
           <div className={styles.content}>
             {content.map((item, index) => {
               if (item.type === 'paragraph') {
-                return <p key={index}>{item.content}</p>;
+                return <p key={id}>{item.content}</p>;
               }else if (item.type === 'link') {
-                return <p><a key={index} href="">{item.content}</a></p>;
+                return <p><a key={id} href="">{item.content}</a></p>;
               }
             })}
             

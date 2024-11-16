@@ -53,15 +53,3 @@ describe('Comment component ', () => {
     });
 
     })
-
-
-
-
-/*
-
-1- verificar se o componente renderizou ---ok
-2- verificar se o componente possui todas as propriedades ---ok
-3- verificar se o comment é deletado quando é clicado na lixeira --ok
-4- verificar se o contador aplaudir aumenta quando o botão e clicado --ok
-5- verificar se ta salvando comentário em vazio
- */
