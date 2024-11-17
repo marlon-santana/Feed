@@ -1,16 +1,18 @@
-
 // Unit tests for: Post
 
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { formatPublishedDate, formatPublishedDateRelativeToNow } from '../../Utils';
+import {
+  formatPublishedDate,
+  formatPublishedDateRelativeToNow,
+} from '../../Utils';
 import { Post } from '../index';
-import "@testing-library/jest-dom";
+import '@testing-library/jest-dom';
 
 // Mocking the necessary modules
-jest.mock("../../Utils", () => {
-  const originalModule = jest.requireActual("../../Utils");
+jest.mock('../../Utils', () => {
+  const originalModule = jest.requireActual('../../Utils');
   return {
     __esModule: true,
     ...originalModule,
@@ -19,11 +21,11 @@ jest.mock("../../Utils", () => {
   };
 });
 
-jest.mock("../../Avatar", () => ({
+jest.mock('../../Avatar', () => ({
   Avatar: () => <div>Mocked Avatar</div>,
 }));
 
-jest.mock("../../Comment/index", () => ({
+jest.mock('../../Comment/index', () => ({
   // eslint-disable-next-line react/prop-types
   Comment: ({ deleteComment, comment }) => (
     <div>
@@ -33,7 +35,7 @@ jest.mock("../../Comment/index", () => ({
   ),
 }));
 
-jest.mock("../Post.module.css", () => ({
+jest.mock('../Post.module.css', () => ({
   wrapper: 'wrapper',
   post: 'post',
   authorInfo: 'authorInfo',
@@ -63,7 +65,13 @@ describe('Post() Post method', () => {
 
   describe('Happy Path', () => {
     it('should render the post with author information and content', () => {
-      render(<Post author={mockAuthor} content={mockContent} publishedAt={mockPublishedAt} />);
+      render(
+        <Post
+          author={mockAuthor}
+          content={mockContent}
+          publishedAt={mockPublishedAt}
+        />
+      );
 
       expect(screen.getByText('John Doe')).toBeInTheDocument();
       expect(screen.getByText('Developer')).toBeInTheDocument();
@@ -73,7 +81,13 @@ describe('Post() Post method', () => {
     });
 
     it('should allow users to add a new comment', () => {
-      render(<Post author={mockAuthor} content={mockContent} publishedAt={mockPublishedAt} />);
+      render(
+        <Post
+          author={mockAuthor}
+          content={mockContent}
+          publishedAt={mockPublishedAt}
+        />
+      );
 
       const textarea = screen.getByPlaceholderText('Deixe um comentário');
       fireEvent.change(textarea, { target: { value: 'New Comment' } });
@@ -83,7 +97,13 @@ describe('Post() Post method', () => {
     });
 
     it('should allow users to delete a comment', () => {
-      render(<Post author={mockAuthor} content={mockContent} publishedAt={mockPublishedAt} />);
+      render(
+        <Post
+          author={mockAuthor}
+          content={mockContent}
+          publishedAt={mockPublishedAt}
+        />
+      );
 
       const textarea = screen.getByPlaceholderText('Deixe um comentário');
       fireEvent.change(textarea, { target: { value: 'Comment to delete' } });
@@ -98,14 +118,26 @@ describe('Post() Post method', () => {
 
   describe('Edge Cases', () => {
     it('should not allow submission of an empty comment', () => {
-      render(<Post author={mockAuthor} content={mockContent} publishedAt={mockPublishedAt} />);
+      render(
+        <Post
+          author={mockAuthor}
+          content={mockContent}
+          publishedAt={mockPublishedAt}
+        />
+      );
 
       const button = screen.getByRole('button', { name: /publicar/i });
       expect(button).toBeDisabled();
     });
 
     it('should display custom validity message when comment is invalid', () => {
-      render(<Post author={mockAuthor} content={mockContent} publishedAt={mockPublishedAt} />);
+      render(
+        <Post
+          author={mockAuthor}
+          content={mockContent}
+          publishedAt={mockPublishedAt}
+        />
+      );
 
       const textarea = screen.getByPlaceholderText('Deixe um comentário');
       fireEvent.invalid(textarea);
